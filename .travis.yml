@@ -11,6 +11,14 @@ install:
   - php artisan key:generate
   - php artisan migrate --seed
 before_script:
+  - |
+    echo -e "[mysqld]
+    character_set_server=utf8mb4
+    collation_server=utf8mb4_unicode_ci
+    innodb_large_prefix=ON
+    innodb_file_format=Barracuda
+    innodb_file_format_max=Barracuda" | sudo tee /etc/mysql/conf.d/travis.cnf
+  - sudo /etc/init.d/mysql restart
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
 script:
