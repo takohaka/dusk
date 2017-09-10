@@ -6,13 +6,6 @@ addons:
   chrome: stable
 install:
   - mysql -uroot -e "create database dusk"
-  - |
-    echo -e "[mysqld]
-    character_set_server=utf8mb4
-    collation_server=utf8mb4_unicode_ci
-    innodb_large_prefix=ON
-    innodb_file_format=Barracuda
-    innodb_file_format_max=Barracuda" | sudo tee /etc/mysql/conf.d/travis.cnf
   - cp .env.travis .env
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
 before_script:
