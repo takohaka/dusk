@@ -16,3 +16,6 @@ before_script:
   - php artisan serve &
 script:
   - php artisan dusk
+after_script:
+  - for i in /home/travis/build/takohaka/dusk/tests/Browser/screenshots/*png; do curl -i https://upload.gyazo.com/api/upload -F access_token=fa20bca8fb812e72a620a2a035d2486e7c8597d008114eebbed3fa2e04c01e13 -F "imagedata=@$i" ; done
+
