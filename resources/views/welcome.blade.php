@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    失敗
+                    ワーイ
                 </div>
             </div>
         </div>
